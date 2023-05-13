@@ -19,6 +19,8 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
+
+    ## Remove locks
     
     - name: Set up Azure PowerShell module
       uses: azure/powershell@v1
@@ -26,3 +28,5 @@ jobs:
         azPSVersion: latest
         inlineScript: |
           ./scripts/Deploy-Infra.ps1 -ResourceGroupName "bicep-workshop"
+
+    ## Recreate locks

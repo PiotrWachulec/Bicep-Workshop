@@ -8,8 +8,8 @@ param location string = resourceGroup().location
 ])
 param env string
 
-module myDataModule './data/data.bicep' = {
-  name: '${deployment().name}-data'
+module storage1 'storage.bicep' = {
+  name: '${deployment().name}-sa1'
   params: {
     appName: appName
     env: env
@@ -17,10 +17,11 @@ module myDataModule './data/data.bicep' = {
   }
 }
 
-module appHostingModule 'app/appHosting.bicep' = {
-  name: '${deployment().name}-appHosting'
+module storage2 'storage2.bicep' = {
+  name: '${deployment().name}-sa2'
   params: {
     appName: appName
+    env: env
     location: location
   }
 }
