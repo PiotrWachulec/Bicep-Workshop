@@ -1,8 +1,20 @@
-resource myResource 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: 'pwbiceptestworkshop'
-  location: 'westeurope'
+param appName string
+
+param location string = resourceGroup().location
+
+@allowed([
+  'PROD'
+  'DEV'
+])
+param env string
+
+var storageAccountName = '${appName}sa'
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: storageAccountName
+  location: location
   kind: 'StorageV2'
   sku: {
-    name: 'Standard_LRS'
+    name: (env == 'PROD') ? 'Standard_GRS' : 'Standard_LRS'
   }
 }
