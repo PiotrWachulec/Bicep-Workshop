@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Deploy Infra",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/scripts/Deploy-Infra.ps1",
+            "args": [
+                "-ResourceGroupName \"bicep-workshop\""
+            ]
+        },
+        {
+            "name": "Deploy Infra 2",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/scripts/Deploy-Infra.ps1",
+            "args": [
+                "-ResourceGroupName \"bicep-workshop\""
+            ]
+        }
+    ]
+}
